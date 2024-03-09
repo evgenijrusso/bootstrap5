@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext as _
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 #from .utilites import get_timestamp_path
@@ -24,17 +25,17 @@ class Advert(models.Model):  # Объявление
                                verbose_name='Автор объявления', related_name='adverts')
     category = models.ForeignKey('Category', null=True,
                                  on_delete=models.PROTECT,
-                                 verbose_name='Категория')
-    title = models.CharField(max_length=100, verbose_name='Заголовок')
-    content = models.TextField(verbose_name='Описание')
-    price = models.FloatField(default=0, verbose_name='Цена')
-    contacts = models.TextField(verbose_name='Контакты')
+                                 verbose_name='Category')  # Категория
+    title = models.CharField(max_length=100, verbose_name='Title')  # Заголовок
+    content = models.TextField(verbose_name='Description')  # Описание
+    price = models.FloatField(default=0, verbose_name='Price')  # Цена
+    contacts = models.TextField(verbose_name='Contacts')  # Контакты
     # image = models.ImageField(blank=True, upload_to=get_timestamp_path,
     #                           verbose_name='Изображение')
     is_active = models.BooleanField(default=True, db_index=True,
-                                    verbose_name='Выводить в списке?')
+                                    verbose_name='Show in list')  #Выводить в списке& ?
     created_at = models.DateTimeField(auto_now_add=True, db_index=True,
-                                      verbose_name='Опубликовано')
+                                      verbose_name='Published')  # Опубликовано
 
     # def delete(self, *args, **kwargs):
     #     for ai in self.additionalimage_set.all():

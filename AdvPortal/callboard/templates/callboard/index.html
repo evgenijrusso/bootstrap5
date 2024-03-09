@@ -1,0 +1,22 @@
+{% extends 'default.html' %}
+
+{% block title %} index {% endblock title %}
+
+{% block content %}
+
+<h3>Количество объявлений: {{ page.object_list.count }}</h3>
+<br>
+<div class="mb-3">
+<hr/>
+    {% for item in page.object_list %}
+    <h5>{{ item.title }}</h5>
+    <h6>{{ item.author }}</h6>
+    <h6>{{ item.price }}</h6>
+    <h6>{{ item.contacts }}</h6>
+    <h6>{{ item.is_active }}</h6>
+    <h6>{{ item.created_at }}</h6>
+    <span>{{ item.content }}</span>
+    <br>
+    {% endfor %}
+</div>
+{% endblock %}
